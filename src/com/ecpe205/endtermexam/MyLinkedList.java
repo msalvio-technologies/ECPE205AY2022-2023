@@ -10,7 +10,18 @@ public class MyLinkedList {
      * @param value
      */
     public void push (char value) {
-
+        Node n = new Node();
+        n.setValue(value);
+        if (head == null){
+            head = n;
+        }else{
+            Node currentLast = head;
+            while(currentLast.getNext() != null){
+                currentLast = currentLast.getNext();
+            }
+            currentLast.setNext(n);
+        }
+        size++;
     }
 
     /**
@@ -18,14 +29,43 @@ public class MyLinkedList {
      * @param value
      */
     public Character pop () {
-        return null;
+        Node save = new Node();
+        if (head == null ){
+            return null;
+        }else if(head.getNext() == null){
+            save = head;
+            head = null;
+            size--;
+        }else {
+            Node currentNode = head;
+            for(int i = 0; i < size - 2; i++)
+            {
+                currentNode = currentNode.getNext();
+            }
+
+            Node lastNode = currentNode.getNext();
+            currentNode.setNext(null);
+            size--;
+            return lastNode.getValue();
+        }
+        return save.getValue();
     }
 
     /**
      * removes and returns the head; if the list is empty, return null
      */
     public Character removeFirst() {
-        return null;
+        if (head == null){
+            head = null;
+            return null;
+        }else if (head != null){
+            Node ogHead = head;
+            Node newHead = head.getNext();
+            head = newHead;
+            size--;
+            return ogHead.getValue();
+        }
+        return  null;
     }
 
     /**
@@ -33,6 +73,9 @@ public class MyLinkedList {
      * @return
      */
     public boolean isEmpty() {
+        if (head == null){
+            return true;
+        }
         return false;
     }
 
@@ -42,5 +85,12 @@ public class MyLinkedList {
 
     public int getSize() {
         return size;
+    }
+    public void display(){
+        Node charac = head;
+        while(charac != null){
+            System.out.print(charac.getValue());
+            charac = charac.getNext();
+        }
     }
 }

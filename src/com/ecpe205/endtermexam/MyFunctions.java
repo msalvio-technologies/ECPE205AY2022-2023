@@ -10,7 +10,39 @@ public class MyFunctions {
      * The palindrome uses stack and queues. The algorithm will be discussed during the examination
      * @return
      */
-    public static boolean isPalindrome() {
-        return false;
+
+    public static boolean isPalindrome(String string) {
+        MyLinkedList stack = new MyLinkedList();
+        MyLinkedList queue = new MyLinkedList();
+
+        char[] characters = string.toCharArray();
+        for(char i : characters)
+        {
+            var lowered = Character.toLowerCase(i);
+
+            for(char checkCharacter = 'a'; checkCharacter <= 'z'; checkCharacter++)
+            {
+                if (String.valueOf(checkCharacter).equalsIgnoreCase(String.valueOf(lowered)))
+                {
+                    // Character is a letter!
+                    stack.push(lowered);
+                    queue.push(lowered);
+                    break;
+                }
+            }
+        }
+        while(!stack.isEmpty())
+        {
+            var stackRes = stack.pop().toString();
+            var queueRes = queue.removeFirst().toString();
+            if (!stackRes.equalsIgnoreCase(queueRes))
+            {
+
+                return false;
+            }
+        }
+
+        return true;
     }
 }
+
