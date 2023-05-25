@@ -9,8 +9,20 @@ public class MyLinkedList {
      * adds value to the tail
      * @param value
      */
-    public void push (char value) {
-
+    public void push (char value ) {
+        Node node = new Node( value );
+        Node node1 = head;
+        if(head == null){
+            head=node;
+            size++;
+        }
+        else{
+            while(node1.getNext() != null){
+                node1 = node1.getNext();
+            }
+            node1.setNext(node);
+            size++;
+        }
     }
 
     /**
@@ -18,14 +30,44 @@ public class MyLinkedList {
      * @param value
      */
     public Character pop () {
-        return null;
+        Node node = head;
+        Node tail;
+        if(head == null){
+            return null;
+        }
+        else if(size == 1){
+            tail=head;
+            head = null;
+            size--;
+            return tail.getValue();
+        }
+        else {
+            for(int i = 0; i<size-1; i++){
+                node = node.getNext();
+            }
+            tail = node;
+            node.setNext(null);
+            size--;
+            return tail.getValue();
+
+        }
     }
 
     /**
      * removes and returns the head; if the list is empty, return null
      */
     public Character removeFirst() {
-        return null;
+        if (head != null) {
+            Node newHead = head.getNext();
+            Node oldHead = head;
+            oldHead.setNext(null);
+            head = newHead;
+            size--;
+            return oldHead.getValue();
+        }
+        else{
+            return null;
+        }
     }
 
     /**
@@ -33,7 +75,12 @@ public class MyLinkedList {
      * @return
      */
     public boolean isEmpty() {
-        return false;
+        if(head == null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public Node getHead() {
