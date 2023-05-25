@@ -46,21 +46,25 @@ public class MyLinkedList {
      */
     public Character pop () {
         Node node = head;
-        Node tail = new Node();
+        if (head == null)
+            return null;
         if(head.getNext()==null){
-            tail = head;
+            var originalHead = head;
             head = null;
             size--;
-            return tail.getValue();
+            return originalHead.getValue();
         }
         if(head.getNext()!=null){
-            while(node.getNext().getNext()!=null){
-                node = node.getNext();
+
+            Node currentNode = head;
+            for(int i = 0 ;i < size - 2; i++)
+            {
+                currentNode = currentNode.getNext();
             }
-            tail = node.getNext();
-            node.setNext(null);
+            var lastNode= currentNode.getNext();
+            currentNode.setNext(null);
             size--;
-            return tail.getValue();
+            return lastNode.getValue();
         }
         return null;
     }

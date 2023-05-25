@@ -21,6 +21,7 @@ class MyFunctionsTest {
      */
     @Test
     public void shouldPush(){
+        MyLinkedList list = new MyLinkedList();
         assertEquals(0,list.getSize());
         list.push('a');
         assertEquals('a',list.getHead().getValue());
@@ -47,6 +48,7 @@ class MyFunctionsTest {
      */
         @Test
         public void shouldPop(){
+            MyLinkedList list = new MyLinkedList();
             assertEquals(null,list.pop());
             assertEquals(0,list.getSize());
             list.push('a');
@@ -67,6 +69,7 @@ class MyFunctionsTest {
      */
     @Test
     public void shouldRemoveFirst(){
+        MyLinkedList list = new MyLinkedList();
         list.push('w');
         list.push('a');
         list.push('s');
@@ -91,6 +94,7 @@ class MyFunctionsTest {
      */
     @Test
     public void shouldEmpty(){
+        MyLinkedList list = new MyLinkedList();
         list.push('a');
         assertEquals(false,list.isEmpty());
         list.pop();
