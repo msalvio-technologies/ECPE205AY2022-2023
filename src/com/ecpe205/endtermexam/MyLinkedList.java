@@ -10,21 +10,64 @@ public class MyLinkedList {
      * @param value
      */
     public void push (char value) {
+        var newNode = new Node();
+        newNode.setValue(value);
 
+        if (head == null)
+        {
+            head = newNode;
+            return;
+        }
+
+        // There's already a head, get the tail
+        // and set next.
+        getTail().setNext(newNode);
+
+        size++;
+    }
+
+    /**
+     * gets the last node
+     * @return the last node
+     */
+    private Node getTail(int backwards)
+    {
+        var currentNode = head;
+        for(int i = 0; i < size - 1 - backwards; i++)
+        {
+            currentNode = currentNode.getNext();
+        }
+        return currentNode;
+    }
+
+    private Node getTail()
+    {
+        return getTail(0);
     }
 
     /**
      * removes and returns the tail ; if the list is empty, return null
-     * @param value
      */
     public Character pop () {
-        return null;
+        if (isEmpty())
+            return null;
+
+        var currentTail = getTail();
+        var nodeBeforeTail = getTail(1);
+        nodeBeforeTail.setNext(null);
+
+        size--;
+        return currentTail.getValue();
     }
 
     /**
      * removes and returns the head; if the list is empty, return null
      */
     public Character removeFirst() {
+        if (isEmpty())
+            return null;
+
+        var currentHead = head;
         return null;
     }
 
@@ -33,7 +76,7 @@ public class MyLinkedList {
      * @return
      */
     public boolean isEmpty() {
-        return false;
+        return head == null;
     }
 
     public Node getHead() {
