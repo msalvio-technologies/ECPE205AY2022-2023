@@ -6,6 +6,11 @@ public class Node {
     private char value;
     private Node next;
 
+    public Node (char value){
+        this.value=value;
+    }
+
+
     public char getValue() {
         return value;
     }

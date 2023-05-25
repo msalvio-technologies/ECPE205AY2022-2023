@@ -10,7 +10,30 @@ public class MyFunctions {
      * The palindrome uses stack and queues. The algorithm will be discussed during the examination
      * @return
      */
-    public static boolean isPalindrome() {
-        return false;
+    public static boolean isPalindrome(String word) {
+        MyLinkedList stack = new MyLinkedList();
+        MyLinkedList queue = new MyLinkedList();
+        for(int i = 0; i<word.length(); i++){
+            if(word.charAt(i)>= 'A'&& word.charAt(i)<=('z')){
+                Character input = word.charAt(i);
+                stack.push(input);
+            }
+
+        }
+        for(int i = word.length()-1; i>=0; i--){
+            if(word.charAt(i)>= 'A'&& word.charAt(i)<=('z')){
+                Character input = word.charAt(i);
+                queue.push(input);
+            }
+        }
+        while(stack.isEmpty() == false){
+            if(stack.pop().toString().toLowerCase().equals(queue.pop().toString().toLowerCase()) == false) {
+                return false;
+            }
+        }
+        return true;
+
+
+
     }
 }
