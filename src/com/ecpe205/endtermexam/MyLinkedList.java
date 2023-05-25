@@ -9,8 +9,7 @@ public class MyLinkedList {
      * adds value to the tail
      * @param value
      */
-    public void push (char value) {
-
+    public void push(char value) {
         var newNode = new Node();
         newNode.setValue(value);
 
@@ -53,11 +52,13 @@ public class MyLinkedList {
      * removes and returns the tail ; if the list is empty, return null
      */
     public Character pop() {
+
         if (isEmpty())
             return null;
 
         if (size <= 1) // There's only a head, return the head.
         {
+            size--;
             return removeFirst();
         }
 
