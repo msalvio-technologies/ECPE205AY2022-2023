@@ -10,7 +10,7 @@ public class MyFunctions {
      * The palindrome uses stack and queues. The algorithm will be discussed during the examination
      * @return
      */
-    public static boolean isPalindrome() {
+    public static boolean isPalindrome(String string) {
         return false;
     }
 }
