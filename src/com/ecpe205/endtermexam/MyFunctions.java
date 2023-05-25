@@ -12,6 +12,7 @@ public class MyFunctions {
             if (character.toString().equalsIgnoreCase(String.valueOf(i)))
                 return true;
         }
+
         return false;
     }
 
@@ -38,7 +39,7 @@ public class MyFunctions {
 
         while(!stack.isEmpty())
         {
-            if (!stack.pop().toString().toLowerCase().equals(queue.removeFirst().toString().toLowerCase()))
+            if (!stack.pop().toString().equalsIgnoreCase(queue.removeFirst().toString()))
             {
                 return false;
             }
