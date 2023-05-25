@@ -31,11 +31,13 @@ public class MyFunctions {
                 }
             }
         }
-
         while(!stack.isEmpty())
         {
-            if (!stack.pop().toString().equalsIgnoreCase(queue.removeFirst().toString()))
+            var stackRes = stack.pop().toString();
+            var queueRes = queue.removeFirst().toString();
+            if (!stackRes.equalsIgnoreCase(queueRes))
             {
+
                 return false;
             }
         }

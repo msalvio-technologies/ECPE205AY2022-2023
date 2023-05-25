@@ -100,7 +100,7 @@ class MyFunctionsTest {
     @MethodSource("arrayOfStringSets")
     void shouldCheckIfPalindrome(String word){
         MyFunctions functions = new MyFunctions();
-        assertTrue(functions.isPalindrome(word));
+s        assertTrue(functions.isPalindrome(word));
 
     }
     static Stream<Arguments> arrayOfCharSets () {

@@ -45,6 +45,7 @@ public class MyLinkedList {
 
             Node lastNode = currentNode.getNext();
             currentNode.setNext(null);
+            size--;
             return lastNode.getValue();
         }
         return save.getValue();
@@ -54,18 +55,17 @@ public class MyLinkedList {
      * removes and returns the head; if the list is empty, return null
      */
     public Character removeFirst() {
-        if (head != null){
-            Node oldHead = head;
-            Node newHead = head.getNext();
-            oldHead.setNext(null);
-            head = newHead;
-            head.setNext(newHead.getNext());
-            size--;
-            return oldHead.getValue();
-        }else if (head == null){
+        if (head == null){
             head = null;
+            return null;
+        }else if (head != null){
+            Node ogHead = head;
+            Node newHead = head.getNext();
+            head = newHead;
+            size--;
+            return ogHead.getValue();
         }
-        return null;
+        return  null;
     }
 
     /**
